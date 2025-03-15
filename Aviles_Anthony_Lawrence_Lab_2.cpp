@@ -20,7 +20,7 @@ void traverse(Node *head){
     Node *temp = new Node;
     temp = head;
 
-    cout << "Me Playlist" << endl;
+    cout << "My Playlist" << endl;
     while(temp != NULL){
         cout << temp->songName << "->" << endl;
         if(temp->link == NULL){
@@ -121,7 +121,7 @@ Node *deleteFromGivenNode(string givenNode, Node *head){
 
     if(head->songName.compare(givenNode) == 0){
         head = deleteFromBeginning(head);
-        cout << "The Node " + givenNode + "has been deleted \n" << endl;
+        cout << "The Node " + givenNode + " has been deleted \n" << endl;
         return head;
     }
     Node *temp = new Node;
@@ -138,7 +138,7 @@ Node *deleteFromGivenNode(string givenNode, Node *head){
         temp = temp->link;
     }
     temp->link = next->link;
-    cout << "The Node" + givenNode + "has been deleted. \n" << endl;
+    cout << "The Node " + givenNode + " has been deleted. \n" << endl;
     return head;
 }
 
@@ -153,21 +153,30 @@ int main(){
  
 
 
-    Node *head = createNode("Sanctuary by Joji");
+     Node *head = createNode("Sanctuary by Joji");
 
     head = insertAtEnd("Sunday Morning by Maroon 5", head);
+    
+    head = insertAtEnd("Die with a Smile by Bruno Mars and Lady Gaga", head);
+    head = insertAtEnd("Luther by Kendrick Lamar", head);
+    head = insertAtEnd("APT by Rose and Bruno Mars", head);
+    head = insertAtBeginning("Over and Over by Skye", head);
+    head = insertAtBeginning("Worlds Smallest Violine by AJR", head);
+    head = insertAtBeginning("See you Again Wiz Khalifa", head);
+    head = insertAtBeginning("Sunshine by One Republic", head);
+
+    string result = insertAfter("Sunshine by One Republic", "Pusong Bato by Jovit Baldivino",head);
+    cout << result << endl;
+    string result1 = insertAfter("Sunshine by One Republic", "Buko by Jireh Lim ",head);
+    cout << result1 << endl;
+    string result2 = insertAfter("Sunshine by One Republic", "Mabagal by Daniel Padilla and Moira Dela Torre",head);
+    cout << result2 << endl;
+
+    string END = deleteAtEnd(head);
+    cout << END << endl;
+    head = deleteFromBeginning(head);
+    head = deleteFromGivenNode("Luther by Kendrick Lamar", head);
     traverse(head);
-
-    head = insertAtEnd("Die with a Smile, Luther, APT", head);
-    traverse(head);
-
-    head = insertAtBeginning("Over and Over, Worlds Smallest Violine, See you Again, Sunshine", head);
-    traverse(head);
-
-    head = insertAfter("Over and Over, Worlds Smallest Violine, See you Again, Sunshine","Buko, Pusong Bato, Minsan, Problema", head);
-    traverse(head);
-
-
 
 
 
